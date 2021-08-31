@@ -16,7 +16,7 @@ setup(
     package_data={'toy_gui.images': ['*.png']},
     entry_points={
         'console_scripts': [
-            'Toy GUI=toy_gui.toy_gui:main'
+            'ToyGUI=toy_gui.toy_gui:main'
         ]
     },
     install_requires=requirements,

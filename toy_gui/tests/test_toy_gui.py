@@ -9,7 +9,7 @@ from toy_gui import toy_gui
 @pytest.fixture
 def window(qtbot):
     """Pass the application to the test functions via a pytest fixture."""
-    new_window = toy_gui.Toy GUI()
+    new_window = toy_gui.ToyGUI()
     qtbot.add_widget(new_window)
     new_window.show()
     return new_window
@@ -17,7 +17,7 @@ def window(qtbot):
 
 def test_window_title(window):
     """Check that the window title shows as declared."""
-    assert window.windowTitle() == 'Toy GUI'
+    assert window.windowTitle() == 'ToyGUI'
 
 
 def test_window_geometry(window):
