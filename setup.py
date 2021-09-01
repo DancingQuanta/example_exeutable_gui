@@ -40,7 +40,7 @@ setup(
             'ToyGUI=toy_gui.toy_gui:main'
         ],
         'gui_scripts': [
-            'ToyGUI=toy_gui.toy_gui:gui_main'
+            'ToyGUI_GUI=toy_gui.toy_gui:gui_main'
         ]
     },
     classifiers=[
