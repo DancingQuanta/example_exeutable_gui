@@ -8,14 +8,14 @@ from PyQt5.QtWidgets import (QAction, QApplication, QDesktopWidget, QDialog, QFi
                              QHBoxLayout, QLabel, QMainWindow, QToolBar, QVBoxLayout, QWidget)
 
 
-class Toy GUI(QMainWindow):
+class Toy_GUI(QMainWindow):
     """Create the main window that stores all of the widgets necessary for the application."""
 
     def __init__(self, parent=None):
         """Initialize the components of the main window."""
-        super(Toy GUI, self).__init__(parent)
+        super(Toy_GUI, self).__init__(parent)
         self.resize(1024, 768)
-        self.setWindowTitle('Toy GUI')
+        self.setWindowTitle('Toy_GUI')
         window_icon = pkg_resources.resource_filename('toy_gui.images',
                                                       'ic_insert_drive_file_black_48dp_1x.png')
         self.setWindowIcon(QIcon(window_icon))
@@ -38,7 +38,7 @@ class Toy GUI(QMainWindow):
         self.file_sub_menu = self.menu_bar.addMenu('File')
 
         self.open_action = QAction('Open File', self)
-        self.open_action.setStatusTip('Open a file into Toy GUI.')
+        self.open_action.setStatusTip('Open a file into Toy_GUI.')
         self.open_action.setShortcut('CTRL+O')
         self.open_action.triggered.connect(self.open_file)
 
@@ -106,7 +106,7 @@ class AboutDialog(QDialog):
 
 def main():
     application = QApplication(sys.argv)
-    window = Toy GUI()
+    window = Toy_GUI()
     desktop = QDesktopWidget().availableGeometry()
     width = (desktop.width() - window.width()) / 2
     height = (desktop.height() - window.height()) / 2
