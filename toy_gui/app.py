@@ -21,17 +21,21 @@ class Toy_GUI(QMainWindow):
         self.setWindowIcon(QIcon(window_icon))
 
         self.widget = QWidget()
-        self.layout = QHBoxLayout(self.widget)
+        self.layout = QVBoxLayout(self.widget)
+        self.layout.setAlignment(Qt.AlignVCenter)
 
+        # Create a message box
+        self.msg_box = QLabel()
+        self.msg_box.setAlignment(Qt.AlignCenter)
+        self.layout.addWidget(self.msg_box)
+
+        # Menus
         self.menu_bar = self.menuBar()
         self.about_dialog = AboutDialog()
-
-        
 
         self.file_menu()
         self.help_menu()
 
-        
 
     def file_menu(self):
         """Create a file submenu with an Open File item that opens a file dialog."""
@@ -71,6 +75,11 @@ class Toy_GUI(QMainWindow):
             with open(filename) as file:
                 file.read()
 
+    def display_msg(self, msg):
+        """Display a message"""
+        print('test')
+        self.msg_box.setText(msg)
+
 
 class AboutDialog(QDialog):
     """Create the necessary elements to show helpful text in a dialog."""
@@ -103,16 +112,25 @@ class AboutDialog(QDialog):
 
         self.setLayout(self.layout)
 
+class App(QApplication):
+    def __init__(self, sys_argv):
+        super(App, self).__init__(sys_argv)
 
-def main():
-    application = QApplication(sys.argv)
-    window = Toy_GUI()
-    desktop = QDesktopWidget().availableGeometry()
-    width = (desktop.width() - window.width()) / 2
-    height = (desktop.height() - window.height()) / 2
-    window.show()
-    window.move(width, height)
-    sys.exit(application.exec_())
+        self.window = Toy_GUI()
 
-def gui_main():
-    pass
+        desktop = QDesktopWidget().availableGeometry()
+        width = (desktop.width() - self.window.width()) / 2
+        height = (desktop.height() - self.window.height()) / 2
+        self.window.show()
+        self.window.move(width, height)
+
+
+def cli():
+    app = App(sys.argv)
+    app.window.display_msg('console_scripts')
+    sys.exit(app.exec_())
+
+def gui():
+    app = App(sys.argv)
+    app.window.display_msg('gui_scripts')
+    sys.exit(app.exec_())

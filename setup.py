@@ -37,10 +37,10 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            'ToyGUI=toy_gui.toy_gui:main'
+            'ToyGUI=toy_gui.app:cli'
         ],
         'gui_scripts': [
-            'ToyGUI_GUI=toy_gui.toy_gui:gui_main'
+            'ToyGUI_GUI=toy_gui.app:gui'
         ]
     },
     classifiers=[
